@@ -227,6 +227,5 @@ def quote_block_to_children(block):
         new_lines.append(line.lstrip(">").strip())
 
     content = " ".join(new_lines)
-    print(content)
     children = text_to_children(content)
     return ParentNode("blockquote", children)
