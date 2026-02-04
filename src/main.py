@@ -17,7 +17,7 @@ def main():
     generate_static(source, target)
 
     print("Generating content...")
-    generate_pages_recursive(from_path, template, dest_path)
+    generate_pages_recursive(from_path, template, dest_path, basepath)
 
 
 if __name__ == "__main__":
