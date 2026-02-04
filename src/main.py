@@ -10,7 +10,7 @@ def main():
     basepath = sys.argv[0] or "/"
 
     source = BASE_DIR.parent / "static"
-    target = BASE_DIR.parent / "public"
+    target = BASE_DIR.parent / "docs"
     from_path = BASE_DIR.parent / "content"
     template = BASE_DIR.parent / "template.html"
     dest_path = target
