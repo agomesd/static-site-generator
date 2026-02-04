@@ -1,12 +1,20 @@
-from textnode import TextNode, TextType
+from pathlib import Path
+from generate_static import generate_static
+from generate_page import GeneratePage
+
+BASE_DIR = Path(__file__).resolve().parent
 
 
 def main():
-    textnode = TextNode(
-        "This is some anchor text", TextType.ANCHOR, "https://www.boot.dev"
-    )
+    source = BASE_DIR.parent / "static"
+    target = BASE_DIR.parent / "public"
+    from_path = BASE_DIR.parent / "content" / "index.md"
+    template = BASE_DIR.parent / "template.html"
+    dest_path = target / "index.html"
+    generate_static(source, target)
 
-    print(textnode)
+    page_gen = GeneratePage(from_path, template, dest_path)
+    page_gen.generate_page()
 
 
 if __name__ == "__main__":

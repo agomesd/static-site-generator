@@ -31,7 +31,7 @@ class TextNode:
             case TextType.ANCHOR:
                 return LeafNode("a", self.text, {"href": self.url})
             case TextType.IMAGE:
-                return LeafNode("img", None, {"src": self.url, "alt": self.text})
+                return LeafNode("img", "", {"src": self.url, "alt": self.text})
             case _:
                 raise Exception(f"invalid TextType: {self.text_type}")
 

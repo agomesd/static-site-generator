@@ -1,6 +1,7 @@
 import unittest
 
 from leafnode import LeafNode
+from textnode import TextNode, TextType
 
 
 class TestLeadNode(unittest.TestCase):
@@ -12,6 +13,21 @@ class TestLeadNode(unittest.TestCase):
         node = LeafNode("a", "Click me!", {"href": "https://www.example.com"})
         self.assertEqual(
             node.to_html(), '<a href="https://www.example.com">Click me!</a>'
+        )
+
+    def test_image_to_html_img(self):
+        node = TextNode("This is an image", TextType.IMAGE, "https://www.boot.dev")
+        html_node = node.text_node_to_html_node()
+        self.assertEqual(html_node.tag, "img")
+        self.assertEqual(html_node.value, "")
+        self.assertEqual(
+            html_node.props,
+            {"src": "https://www.boot.dev", "alt": "This is an image"},
+        )
+
+        html = html_node.to_html()
+        self.assertEqual(
+            html, '<img src="https://www.boot.dev" alt="This is an image" />'
         )
 
     def test_leaf_to_html_p_with_props(self):
