@@ -9,6 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent
 def main():
     basepath = Path(sys.argv[0])
 
+    print(f"BASEPATH: {basepath}")
+
     source = BASE_DIR.parent / "static"
     target = BASE_DIR.parent / "docs"
     from_path = BASE_DIR.parent / "content"
