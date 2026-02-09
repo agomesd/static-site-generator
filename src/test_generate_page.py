@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 from_path = BASE_DIR.parent / "content" / "index.md"
 template = BASE_DIR.parent / "template.html"
-dest_path = BASE_DIR.parent / "public" / "index.html"
+dest_path = BASE_DIR.parent / "docs" / "index.html"
 
 
 class TestGeneratePage(unittest.TestCase):

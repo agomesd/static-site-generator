@@ -7,9 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 
 def main():
-    basepath = Path(sys.argv[0])
-
-    print(f"BASEPATH: {basepath}")
+    basepath = sys.argv[1] if len(sys.argv) > 1 else "/"
 
     source = BASE_DIR.parent / "static"
     target = BASE_DIR.parent / "docs"
