@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from helper_funcs import markdown_to_html_node
+from helper_funcs import markdown_to_html_node, rewrite_paths
 
 
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
@@ -26,13 +26,13 @@ def generate_page(from_path, template_path, dest_path, basepath):
 
     node = markdown_to_html_node(markdown_content)
     html = node.to_html()
+    html = rewrite_paths(html, basepath)
 
     title = extract_title(markdown_content)
     template = (
         template.replace("{{ Title }}", title)
         .replace("{{ Content }}", html)
-        .replace('href="/', f'href="{basepath}')
-        .replace('src="/', f'src="{basepath}')
+        .replace("{{ BasePath }}", basepath)
     )
 
     dest_dir_path = os.path.dirname(dest_path)

@@ -229,3 +229,13 @@ def quote_block_to_children(block):
     content = " ".join(new_lines)
     children = text_to_children(content)
     return ParentNode("blockquote", children)
+
+
+def rewrite_paths(html, basepath):
+    if basepath == "/":
+        return html
+
+    basepath = basepath.rstrip("/")
+
+    new_html = re.sub(r'(href|src)="/(.*?)"', rf'\1="{basepath}/\2"', html)
+    return new_html
